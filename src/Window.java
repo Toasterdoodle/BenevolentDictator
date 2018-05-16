@@ -15,7 +15,7 @@ public class Window extends JPanel {
 
     private int width, height, size;
 
-    private int fps = 60;//determines how many frames per second game will run at
+    private int fps = 50;//determines how many frames per second game will run at
 
     //==========constructor==========
 
