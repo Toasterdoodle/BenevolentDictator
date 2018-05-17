@@ -15,22 +15,14 @@ public class Window extends JPanel {
 
     private int width, height, size;
 
-    private int fps = 50;//determines how many frames per second game will run at
+    private int voting = 0;
+    //0 represents needing a vote
+    //1 represents yes
+    //2 represents no
 
-    //==========constructor==========
+    private int fps = 60;//determines how many frames per second game will run at
 
-    public Window(int w, int h){
-
-        setSize(w, h);
-
-        this.width = w;
-        this.height = h;
-
-        setUpMouseListener();
-
-        timer.start();
-
-    }//end Window
+    private Font defaultFont = new Font("Times New Roman", Font.ITALIC + Font.BOLD, 50);
 
     //----------timer----------
     Timer timer = new Timer(1000 / fps, new ActionListener() {
@@ -45,6 +37,31 @@ public class Window extends JPanel {
 
     });//end timer
 
+    //-----setting up buttons-----
+
+    JButton no = new JButton("No");
+
+    JButton yes = new JButton("Yes");
+
+    //==========constructor==========
+
+    public Window(int w, int h){
+
+        setSize(w, h);
+
+        this.width = w;
+        this.height = h;
+
+        setUpMouseListener();
+
+        setUpButtons();
+
+        timer.start();
+
+        setBackground(new Color(241, 238, 144));
+
+    }//end Window
+
     //==========methods==========
 
     public void paintComponent(Graphics g){
@@ -53,6 +70,13 @@ public class Window extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+
+        //draw speech box
+        g2.setColor(new Color(99, 99, 99));
+        g2.fillRect(20, 510, 760, 250);
+
+        g2.setColor(new Color(212, 212, 212));
+        g2.fillRect(30, 520, 740, 230);
 
     }//end paintComponent
 
@@ -73,6 +97,8 @@ public class Window extends JPanel {
                 //finds the x and y position of the cursor
                 int x = e.getX();
                 int y = e.getY();
+
+                System.out.println(x + ", " + y);
 
             }//end mousePressed
 
@@ -96,5 +122,78 @@ public class Window extends JPanel {
     }//end setUpMouseListener
 
     //--------------------
+
+    public void setUpButtons(){
+
+        //-----setting up buttons-----
+
+        yes.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                voting = 1;
+
+                System.out.println(voting);
+
+            }//end actionPerformed
+
+        });
+
+        no.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                voting = 2;
+
+                System.out.println(voting);
+
+            }//end actionPerformed
+
+        });//end actionListner
+
+        //changes look and feel
+        try{
+
+            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+
+        }//end try
+        catch (Exception e) {
+
+            e.printStackTrace();
+
+        }//end catch
+
+        setLayout(null);
+
+        int buttonWidth = 200;
+        int buttonHeight = 100;
+
+        yes.setSize(new Dimension(buttonWidth, buttonHeight));
+        no.setSize(new Dimension(buttonWidth, buttonHeight));
+
+        yes.setVisible(true);
+        no.setVisible(true);
+
+        yes.setBorderPainted(true);
+        no.setBorderPainted(true);
+
+        yes.setOpaque(true);
+        no.setOpaque(true);
+
+        yes.setBackground(new Color(113, 214, 84));
+        no.setBackground(new Color(255, 91, 93));
+
+        yes.setLocation(200 - buttonWidth / 2, 20);
+        no.setLocation(600 - buttonWidth / 2, 20);
+
+        yes.setFont(defaultFont);
+        no.setFont(defaultFont);
+
+        add(yes);
+        add(no);
+
+    }//end setUpButtons
 
 }//end class
