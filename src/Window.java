@@ -20,9 +20,24 @@ public class Window extends JPanel {
     //1 represents yes
     //2 represents no
 
+    private boolean speaking = false;
+    //determines whether someone is speaking to you or not
+
     private int fps = 60;//determines how many frames per second game will run at
 
     private Font defaultFont = new Font("Times New Roman", Font.ITALIC + Font.BOLD, 50);
+
+    private int vp = 500;//stands for victory points
+    //if victory points is 1000, the player wins
+    //if victory points is 0, the player loses, and GAME OVER
+
+    private int production = 200;
+    //this will be the currency of the game
+    //you can spend production on stuff
+
+    private int strength = 50;
+    //strength will either increase or decrease capitulation by strength/10
+
 
     //----------timer----------
     Timer timer = new Timer(1000 / fps, new ActionListener() {
@@ -71,12 +86,16 @@ public class Window extends JPanel {
 
         Graphics2D g2 = (Graphics2D)g;
 
-        //draw speech box
-        g2.setColor(new Color(99, 99, 99));
-        g2.fillRect(20, 510, 760, 250);
+        if(speaking){
 
-        g2.setColor(new Color(212, 212, 212));
-        g2.fillRect(30, 520, 740, 230);
+            //draw speech box
+            g2.setColor(new Color(99, 99, 99));
+            g2.fillRect(20, 510, 760, 250);
+
+            g2.setColor(new Color(212, 212, 212));
+            g2.fillRect(30, 520, 740, 230);
+
+        }//end if
 
     }//end paintComponent
 
