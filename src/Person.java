@@ -1,6 +1,9 @@
+import com.sun.org.apache.xerces.internal.xs.StringList;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 
 /**
@@ -24,8 +27,10 @@ public class Person {
     // (6) The diplomat: represents foreign relations
 
 
-    private String line;
-    //determines what the minister is going to say
+    private ArrayList<String> line = new ArrayList<String>();
+    //determines what the person is going to say
+    //there is going to be an array of things for the person to say
+    //when the person finishes saying that thing, that string will be removed, and the next string will be said.
 
     private String name, fileName;
 
@@ -34,6 +39,9 @@ public class Person {
     //interactions will always be two numbers
     //first number represents the request
     //second number represents whether the player said yes or no
+
+    private boolean meeting;
+    //determines whether the current mans is meeting with the player
 
     //=======constructor=======
 
@@ -117,5 +125,44 @@ public class Person {
 
     }//end getContains
 
+    //--------------------
+
+    public boolean isMeeting() {
+
+        return meeting;
+
+    }//end isMeeting
+
+    //--------------------
+
+    public void setMeeting(boolean meeting) {
+
+        this.meeting = meeting;
+
+    }//end setMeeting
+
+    //--------------------
+
+    public String getLine(int index) {
+
+        return line.get(index);
+
+    }//end getLine
+
+    //--------------------
+
+    public void addLine(String something) {
+
+        line.add(something);
+
+    }//end setLine
+
+    //--------------------
+
+    public void removeLine(int index){
+
+        line.remove(index);
+
+    }//end removeLine
 
 }//end class Person
