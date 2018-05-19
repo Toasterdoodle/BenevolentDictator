@@ -27,6 +27,7 @@ public class Diplomat extends Person{
             addLine("I will help you make decisions regarding our allies as well as neutral countries.");
             addLine("I will also try my best to help you stay informed on global politics.");
             addLine("Together, with our allies, we shall win this war.");
+            //testing commit function
 
         }//end if
 

@@ -1,5 +1,3 @@
-import com.sun.org.apache.xerces.internal.xs.StringList;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class Person {
     // (2) The engineer: production for the military
     // (3) The farmer: food for people and troops
     // (4) The politician: represents the will of the people
-    // (5) The spy: military intelligvence
+    // (5) The spy: military intelligence
     // (6) The diplomat: represents foreign relations
 
 
