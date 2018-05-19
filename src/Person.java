@@ -23,7 +23,7 @@ public class Person {
     // (2) The engineer: production for the military
     // (3) The scientist: research for new weapons and stuff
     // (4) The politician: represents the will of the people
-    // (5) The spy: military intelligvence
+    // (5) The spy: military intelligence
     // (6) The diplomat: represents foreign relations
 
 
