@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * Created by Michael Chen on 5/8/18.
@@ -19,6 +20,8 @@ public class Window extends JPanel {
     //0 represents needing a vote
     //1 represents yes
     //2 represents no
+
+    private ArrayList<Person> speakerList = new ArrayList<>();
 
     private boolean speaking = false;
     //determines whether someone is speaking to you or not
@@ -38,6 +41,9 @@ public class Window extends JPanel {
     private int strength = 50;
     //strength will either increase or decrease vp by strength/10
 
+    private Person currentSpeaker;
+    //designates who is currently speaking
+
 
     //----------timer----------
     Timer timer = new Timer(1000 / fps, new ActionListener() {
@@ -47,8 +53,6 @@ public class Window extends JPanel {
             //stuff in here will run 60 times every second
 
             repaint();
-
-            //TODO: make code so that if speaking = true, then draw the first person in the arraylist
 
         }//end actionPerformed
 
@@ -96,6 +100,8 @@ public class Window extends JPanel {
 
             g2.setColor(new Color(212, 212, 212));
             g2.fillRect(30, 520, 740, 230);
+
+
 
         }//end if
 
@@ -216,5 +222,19 @@ public class Window extends JPanel {
         add(no);
 
     }//end setUpButtons
+
+    //--------------------
+
+    public void setUpPeople(){
+        //sets up the people in the game
+
+        General general = new General("The General", "placeholder");
+        Diplomat diplomat = new Diplomat("The Diplomat", "placeholder");
+        Scientist scientst = new Scientist("The Scientist", "placeholder");
+        Politician politician = new Politician("The Politician", "placeholder");
+        Spy spy = new Spy("The Spy", "placeholder");
+        Engineer engineer = new Engineer("The Engineer", "placeholder");
+
+    }//end setUpPeople
 
 }//end class
