@@ -11,6 +11,12 @@ import java.util.ArrayList;
  */
 
 public class Window extends JPanel {
+    //General ideas:
+    //each day, the leader will meet all 6 people
+    //each person is unique and can benefit or damage the war effort in different ways
+    //when the person has finished meeting with the player, he will be removed from the speakerList
+    //currentSpeaker will then point to someone else
+    //When the game detects that the speakerlist is empty, it will tally up the results of the day and show them to the player
 
     //=====instance fields=====
 
@@ -22,6 +28,7 @@ public class Window extends JPanel {
     //2 represents no
 
     private ArrayList<Person> speakerList = new ArrayList<>();
+    //will contain a list of who the leader needs to meet
 
     private boolean speaking = false;
     //determines whether someone is speaking to you or not
@@ -34,9 +41,9 @@ public class Window extends JPanel {
     //if victory points is 1000, the player wins
     //if victory points is 0, the player loses, and GAME OVER
 
-    private int production = 200;
+    private int resources = 200;
     //this will be the currency of the game
-    //you can spend production on stuff
+    //you can spend resources on stuff
 
     private int strength = 50;
     //strength will either increase or decrease vp by strength/10
@@ -44,6 +51,16 @@ public class Window extends JPanel {
     private Person currentSpeaker;
     //designates who is currently speaking
 
+    private int production;
+    //production affects how much resources will increase by whenever something happens
+
+    //sets up the people in the game
+    General general = new General("The General", "placeholder");
+    Diplomat diplomat = new Diplomat("The Diplomat", "placeholder");
+    Scientist scientist = new Scientist("The Scientist", "placeholder");
+    Politician politician = new Politician("The Politician", "placeholder");
+    Spy spy = new Spy("The Spy", "placeholder");
+    Engineer engineer = new Engineer("The Engineer", "placeholder");
 
     //----------timer----------
     Timer timer = new Timer(1000 / fps, new ActionListener() {
@@ -80,6 +97,9 @@ public class Window extends JPanel {
         timer.start();
 
         setBackground(new Color(241, 238, 144));
+
+        resetSpeakerList();
+        //setting up the speakerlist for the first time
 
     }//end Window
 
@@ -225,16 +245,15 @@ public class Window extends JPanel {
 
     //--------------------
 
-    public void setUpPeople(){
-        //sets up the people in the game
+    public void resetSpeakerList(){
 
-        General general = new General("The General", "placeholder");
-        Diplomat diplomat = new Diplomat("The Diplomat", "placeholder");
-        Scientist scientst = new Scientist("The Scientist", "placeholder");
-        Politician politician = new Politician("The Politician", "placeholder");
-        Spy spy = new Spy("The Spy", "placeholder");
-        Engineer engineer = new Engineer("The Engineer", "placeholder");
+        speakerList.add(general);//the general should go first because he brings important news about the war
+        speakerList.add(engineer);//engineer goes second because he gives both production and resources
+        speakerList.add(diplomat);
+        speakerList.add(politician);
+        speakerList.add(spy);
+        speakerList.add(scientist);
 
-    }//end setUpPeople
+    }//end resetPlayerList
 
 }//end class
