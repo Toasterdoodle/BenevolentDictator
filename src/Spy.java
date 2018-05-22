@@ -17,7 +17,7 @@ public class Spy extends Person{
 
     //==========methods==========
 
-    public void setLine(int lineNumber){
+    public void addLines(int lineNumber){
 
         if(lineNumber == 0){
             //introduction line

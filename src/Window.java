@@ -20,6 +20,9 @@ public class Window extends JPanel {
 
     //=====instance fields=====
 
+    private int day = 1;
+    //counts number of days
+
     private int width, height, size;
 
     private int voting = 0;
@@ -71,6 +74,45 @@ public class Window extends JPanel {
 
             repaint();
 
+            //detects whether the current speaker has finished speaking
+            //again, due to the way that this is set up, the lines must be removed after the player has read them
+            //doing it before will cause issues
+            if(currentSpeaker.getLineSize() <= 0){
+                //this will automatically fire up when the game launches because the getLineSize starts off at zero
+
+                speakerList.remove(0);
+
+                if(speakerList.size() >= 0){
+
+                    currentSpeaker = speakerList.get(0);
+
+                    if(day == 1) {
+                        //causes speakers to say introductory lines when they all first meet the player
+
+                        currentSpeaker.addLines(0);
+
+                    }//end if
+                    else{
+
+                        //TODO: add speaker rng here, need more lines before any of this though
+
+                    }//end else
+
+                }//end if
+                else{
+
+                    //if there are no speakers left
+                    //due to the way this if statement is set up, the speaker must be removed from the list after he has finished speaking
+                    //doing it before will cause issues
+
+                    //TODO: some code here to reset the day or something
+
+                    resetSpeakerList();
+
+                }//end else
+
+            }//end if
+
         }//end actionPerformed
 
     });//end timer
@@ -121,7 +163,37 @@ public class Window extends JPanel {
             g2.setColor(new Color(212, 212, 212));
             g2.fillRect(30, 520, 740, 230);
 
+            //draws characters
+            if(currentSpeaker == general){
 
+                //TODO: draw general, as well as other characters
+
+            }//end if
+            else if(currentSpeaker == spy){
+
+
+
+            }//end else if
+            else if(currentSpeaker == diplomat){
+
+
+
+            }//end else if
+            else if(currentSpeaker == scientist){
+
+
+
+            }//end else if
+            else if(currentSpeaker == politician){
+
+
+
+            }//end else if
+            else if(currentSpeaker == engineer){
+
+
+
+            }//end else if
 
         }//end if
 
@@ -253,6 +325,8 @@ public class Window extends JPanel {
         speakerList.add(politician);
         speakerList.add(spy);
         speakerList.add(scientist);
+
+        currentSpeaker = speakerList.get(0);
 
     }//end resetPlayerList
 

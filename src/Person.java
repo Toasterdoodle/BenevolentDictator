@@ -23,7 +23,6 @@ public class Person {
     // (5) The spy: military intelligence
     // (6) The diplomat: represents foreign relations
 
-
     private ArrayList<String> line = new ArrayList<String>();
     //determines what the person is going to say
     //there is going to be an array of things for the person to say
@@ -161,5 +160,29 @@ public class Person {
         line.remove(index);
 
     }//end removeLine
+
+    //--------------------
+
+    public void registerDecision(int num){
+        //registers whether the player said yes or no
+
+
+    }//end registerDecision
+
+    //--------------------
+
+    public int getLineSize(){
+
+        return line.size();
+
+    }//end getLineSize
+
+    //--------------------
+
+    public void addLines(int num){
+        //doesn't do anything, only here so that the method is callable
+        //the actual addLines methods which are used are all contained in the child classes
+
+    }//end addLines
 
 }//end class Person
