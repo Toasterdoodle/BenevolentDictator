@@ -1,9 +1,6 @@
-import com.sun.org.apache.xerces.internal.xs.StringList;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 
 /**
@@ -37,7 +34,7 @@ public class Person {
     private ArrayList<Integer> interactions = new ArrayList<Integer>();
     //this will contain all past interactions
     //interactions will always be two numbers
-    //first number represents the request
+    //first number represents the interaction key
     //second number represents whether the player said yes or no
 
     private boolean meeting;

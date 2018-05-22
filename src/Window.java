@@ -36,7 +36,7 @@ public class Window extends JPanel {
     //you can spend production on stuff
 
     private int strength = 50;
-    //strength will either increase or decrease capitulation by strength/10
+    //strength will either increase or decrease vp by strength/10
 
 
     //----------timer----------
@@ -47,6 +47,8 @@ public class Window extends JPanel {
             //stuff in here will run 60 times every second
 
             repaint();
+
+            //TODO: make code so that if speaking = true, then draw the first person in the arraylist
 
         }//end actionPerformed
 
@@ -157,7 +159,7 @@ public class Window extends JPanel {
 
             }//end actionPerformed
 
-        });
+        });//end addActionListener
 
         no.addActionListener(new ActionListener() {
 
@@ -170,7 +172,7 @@ public class Window extends JPanel {
 
             }//end actionPerformed
 
-        });//end actionListner
+        });//end addActionListner
 
         //changes look and feel
         try{
